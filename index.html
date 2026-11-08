@@ -6,6 +6,16 @@
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="apple-touch-icon" href="./favicon.png" />
     <title>LoneWolf - Creative Studio</title>
+    <script>
+      // Ensure trailing slash on GitHub Pages subdirectory URLs so relative assets resolve properly
+      if (
+        window.location.pathname.length > 1 &&
+        !window.location.pathname.endsWith('/') &&
+        !window.location.pathname.split('/').pop().includes('.')
+      ) {
+        window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
