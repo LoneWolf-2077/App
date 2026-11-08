@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Play, Eye, Flame, Calendar, Award, Share2, Volume2, Sparkles, Youtube } from "lucide-react";
+import { Play, Eye, Flame, Calendar, Award, Share2, Volume2, Sparkles, Youtube, Package, Code2 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 interface VideoTeaserProps {
@@ -13,39 +13,14 @@ export default function VideoTeaser({ isDarkMode }: VideoTeaserProps) {
   const [hasLiked, setHasLiked] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
 
-  // Live Timer Countdown to Fall 2026 estimate (e.g., Nov 10, 2026)
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
   useEffect(() => {
     // Slowly increment views and likes for a live feel
     const interval = setInterval(() => {
       setViews(prev => prev + Math.floor(Math.random() * 5) + 1);
     }, 4500);
 
-    const targetDate = new Date("November 10, 2026 00:00:00").getTime();
-
-    const updateTimer = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    updateTimer();
-    const timerInterval = setInterval(updateTimer, 1000);
-
     return () => {
       clearInterval(interval);
-      clearInterval(timerInterval);
     };
   }, []);
 
@@ -228,7 +203,7 @@ export default function VideoTeaser({ isDarkMode }: VideoTeaserProps) {
           </div>
         </motion.div>
 
-        {/* Dynamic Countdown Section (Fall 2026 Estimated Launch) */}
+        {/* Fanrica Reveal Section (Open Source Script & Asset Library) */}
         <div className={`mt-12 p-6 sm:p-8 rounded-2xl border ${
           isDarkMode
             ? "bg-gradient-to-r from-indigo-950/20 via-slate-900/40 to-pink-950/20 border-white/5"
@@ -236,45 +211,37 @@ export default function VideoTeaser({ isDarkMode }: VideoTeaserProps) {
         } relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6`}>
           
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-gradient-to-tr from-vice-pink to-vice-purple text-white rounded-xl shadow-md">
-              <Sparkles className="w-6 h-6 animate-spin-slow" />
+            <div className="p-3 bg-gradient-to-tr from-vice-pink to-vice-purple text-white rounded-xl shadow-md shrink-0">
+              <Package className="w-6 h-6" />
             </div>
             <div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-vice-cyan/10 border border-vice-cyan/30 text-vice-cyan text-[10px] font-mono uppercase tracking-widest font-bold mb-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-vice-cyan animate-pulse" />
+                <span>UPCOMING RELEASE</span>
+              </div>
               <h4 className={`font-display font-extrabold text-xl sm:text-2xl tracking-tight leading-snug ${
                 isDarkMode ? "text-white" : "text-slate-900"
               }`}>
-                PROJECT NEON REVEAL_
+                FANRICA REVEAL_
               </h4>
-              <p className={`text-xs sm:text-sm ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
-                A brand-new immersive, full-stack sandbox dashboard is dropping. Watch the live development countdown timer.
+              <p className={`text-xs sm:text-sm mt-0.5 ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
+                An open source script and asset library coming soon.
               </p>
             </div>
           </div>
 
-          {/* Countdown Clock Grid */}
-          <div className="flex gap-2 sm:gap-4 font-mono">
-            {[
-              { value: timeLeft.days, label: "Days" },
-              { value: timeLeft.hours, label: "Hours" },
-              { value: timeLeft.minutes, label: "Mins" },
-              { value: timeLeft.seconds, label: "Secs" }
-            ].map((col, i) => (
-              <div
-                key={i}
-                className={`w-16 h-18 sm:w-20 sm:h-20 rounded-xl flex flex-col items-center justify-center border shadow-sm ${
-                  isDarkMode
-                    ? "bg-black/50 border-white/10 text-white"
-                    : "bg-white border-slate-200 text-slate-800"
-                }`}
-              >
-                <span className="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-vice-pink to-vice-purple select-none">
-                  {String(col.value).padStart(2, "0")}
-                </span>
-                <span className={`text-[9px] uppercase tracking-wider font-semibold ${isDarkMode ? "text-slate-500" : "text-slate-400"}`}>
-                  {col.label}
-                </span>
-              </div>
-            ))}
+          {/* Status Badges */}
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <div className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border text-xs font-mono font-medium ${
+              isDarkMode ? "bg-black/40 border-white/10 text-slate-300" : "bg-white border-slate-200 text-slate-700"
+            }`}>
+              <Code2 className="w-3.5 h-3.5 text-vice-cyan" />
+              <span>OPEN SOURCE</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-vice-pink to-vice-purple text-white font-display text-xs font-bold tracking-widest uppercase shadow-md shadow-vice-pink/20">
+              <Sparkles className="w-3.5 h-3.5 animate-spin-slow" />
+              <span>COMING SOON</span>
+            </div>
           </div>
 
         </div>
