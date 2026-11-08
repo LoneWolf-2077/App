@@ -638,12 +638,12 @@ export default function WorkPage({ isDarkMode, activeSubCategory, onSelectSubCat
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col justify-between p-4 sm:p-6"
+              className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col justify-between p-4 sm:p-6 pt-20 sm:pt-24"
               onClick={() => setLightboxIndex(null)}
             >
               {/* Lightbox Header Bar */}
               <div 
-                className="flex items-center justify-between z-10 w-full max-w-7xl mx-auto"
+                className="flex items-center justify-between z-10 w-full max-w-7xl mx-auto mt-2 sm:mt-0"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex items-center gap-3">
