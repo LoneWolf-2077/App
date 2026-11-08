@@ -1,0 +1,8 @@
+{
+  "name": "LoneWolf official",
+  "description": "the official website for lonewolf",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

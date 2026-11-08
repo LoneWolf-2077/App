@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,800;1,700&family=Inter:wght@300;400;500;600;700&family=Pacifico&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Vermin Vibes';
+  src: url('./assets/Vermin_Vibes.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-script: "Pacifico", cursive;
+  --font-vermin: "Vermin Vibes", sans-serif;
+
+  /* Brand Colors Profile (Primary 1: #20407b, Primary 2: #12bdc6 forming a gorgeous high-tech brand gradient) */
+  --color-brand-primary1: #20407b;
+  --color-brand-primary2: #12bdc6;
+  --color-rockstar-yellow: #fbad18;
+  --color-vice-pink: #20407b; /* Deep Brand Blue support */
+  --color-vice-purple: #167da3; /* Seamless blue-cyan mid-point blend */
+  --color-vice-cyan: #12bdc6; /* Radiant Brand Cyan/Teal */
+  --color-neon-sunset: #12bdc6;
+
+  /* Smooth scroll support */
+  --scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+.light ::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+::-webkit-scrollbar-thumb {
+  background: #312e81;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f43f5e;
+}
+
+/* Base custom classes to support fluid theme transitions */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Neon Glow Animations */
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 0 0 4px var(--color-vice-pink), 0 0 10px var(--color-vice-pink), 0 0 20px var(--color-vice-pink);
+  }
+  50% {
+    text-shadow: 0 0 8px var(--color-vice-cyan), 0 0 20px var(--color-vice-cyan), 0 0 35px var(--color-vice-cyan);
+  }
+}
+
+.animate-neon {
+  animation: neon-pulse 4s infinite alternate;
+}
+
+/* Noise overlay for cinematic rockstar aesthetic */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3e%3Cfilter id='noiseFilter'%3e%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3e%3C/filter%3e%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3e%3C/svg%3e");
+}
+
+/* Sleek Interface Theme Specific Gradients & Layout Accents */
+.sleek-viewport-bg {
+  background: radial-gradient(circle at 80% 20%, #102142 0%, #05070e 70%);
+}
+
+.sleek-glow-pink {
+  background: radial-gradient(circle, rgba(32, 64, 123, 0.25) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.sleek-glow-blue {
+  background: radial-gradient(circle, rgba(18, 189, 198, 0.12) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.sleek-title-gradient {
+  background: linear-gradient(to bottom, #ffffff 45%, #12bdc6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sleek-border {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
